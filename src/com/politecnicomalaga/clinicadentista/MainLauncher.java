@@ -73,6 +73,7 @@ public class MainLauncher {
 			iOpcion = sc.nextInt();
 			sc.nextLine();
 		} catch (InputMismatchException e) {
+			sc.nextLine();
 			return -1;
 		}
 		return iOpcion;
@@ -85,6 +86,7 @@ public class MainLauncher {
 				fOpcion = sc.nextFloat();
 				sc.nextLine();
 			} catch (InputMismatchException e) {
+				sc.nextLine();
 				return -1f;
 			}
 			return fOpcion;

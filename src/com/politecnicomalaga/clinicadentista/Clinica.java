@@ -115,6 +115,18 @@ public class Clinica {
 		return null;
 	}
 	
+	public Paciente buscaUnPaciente(String dni) {
+        
+		for(Paciente p: misPacientes) {
+			if (p.compara(dni,Paciente.AtributosPaciente.DNI)) {
+				return p;
+			}
+		}
+		
+		return null;
+	}
+	
+	
 	public Paciente[] todosPacientes() {
 		if (misPacientes.size()==0) return null;
 		Paciente[] listaP = new Paciente[misPacientes.size()]; 
@@ -122,9 +134,9 @@ public class Clinica {
 	}
 	
 	public boolean actualizaPaciente(String dni, String campo, Paciente.AtributosPaciente atrActualizar) {
-		Paciente[] p = this.buscaPacientes(dni, Paciente.AtributosPaciente.DNI);
-		if (p != null && p.length == 1) {
-			p[0].setValor(campo, atrActualizar);
+		Paciente p = this.buscaUnPaciente(dni);
+		if (p != null) {
+			p.setValor(campo, atrActualizar);
 			return true;
 		}
 		return false;

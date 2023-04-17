@@ -180,11 +180,16 @@ public class Paciente {
     public void setValor(String campo, AtributosPaciente at) {
 		
 		switch (at) {
-		case NOMBRE: this.setsNombre(campo);;
+		case NOMBRE: this.setsNombre(campo);
+		break;
 		case APELLIDOS:  this.setsApellidos(campo);
+		break;
 		case DNI:  this.setsDni(campo);
+		break;
 		case FNAC:  this.setsFNac(campo);
-		case EMAIL:  this.setsEmail(campo);;
+		break;
+		case EMAIL:  this.setsEmail(campo);
+		break;
 		case TFNO: this.setsTelefono(campo);	
 		}
 		
