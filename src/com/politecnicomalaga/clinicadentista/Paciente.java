@@ -28,6 +28,35 @@ public class Paciente {
 		this.sFNac = sFNac;
 		misTratamientos = new ArrayList<>();
 	}
+	
+	
+	public Paciente(String sCSV) {
+		String[] lineas = sCSV.split("\n");
+		//Me vendrá una línea mínimo para paciente
+		String[] columnas = lineas[0].split(";");
+		if (columnas[0].equals("Paciente")) {
+			this.sNombre = columnas[1];
+			this.sApellidos = columnas[2];
+			this.sTelefono = columnas[3];
+			this.sEmail = columnas[4];
+			this.sDni = columnas[5];
+			this.sFNac = columnas[6];
+		} else {
+			return;
+		}
+		
+		//Después de 0 a n tratamientos
+		misTratamientos = new ArrayList<>();
+		
+		//Si las líneas son más de 1... Hay tratamientos
+		for(int i= 1;i<lineas.length;i++) {
+			//trabajo el tratamiento
+			Tratamiento t = new Tratamiento(lineas[i]);
+			//lo pongo en la lista
+			this.misTratamientos.add(t);
+		}
+		
+	}
 
 	//Getters y Setters
 	public String getsNombre() {
@@ -198,6 +227,14 @@ public class Paciente {
 	@Override
 	public String toString() {
 		return String.format("%15s#%25s#%9s#%10s#%20s#%13s", sNombre, sApellidos, sDni, sFNac, sEmail,sTelefono);
+	}
+	
+	public String toCSV() {
+		String resultado = String.format("Paciente;%s;%s;%s;%s;%s;%s\n", sNombre, sApellidos, sDni, sFNac, sEmail,sTelefono);
+		for(Tratamiento t:this.misTratamientos) {
+			resultado += t.toCSV();
+		}
+		return resultado;
 	}
 	
 

@@ -20,6 +20,25 @@ public class Tratamiento {
 		
 		bCobrado = (fPrecio==0f);
 	}
+	
+	public Tratamiento(String sCSV) {
+		String[] columnas = sCSV.split(";");
+		
+		if (columnas[0].equals("Tratamiento")) {
+			this.sCodigo = columnas[1];
+			this.sDescripcion = columnas[2];
+			this.sFecha = columnas[3];
+			this.fPrecio = Float.valueOf(columnas[4]);
+			this.bCobrado = Boolean.valueOf(columnas[5]);
+		} else {
+			this.sCodigo = "";
+			this.sDescripcion = "";
+			this.sFecha = "";
+			this.fPrecio = 0f;
+			
+			bCobrado = true;
+		}
+	}
 
 	//Getters y Setters
 	public String getsCodigo() {
@@ -91,6 +110,10 @@ public class Tratamiento {
 	@Override
 	public String toString() {
 		return String.format("%6s#%30s#%10s#%4.2f# Cobrado: %b", sCodigo, sDescripcion, sFecha, fPrecio, bCobrado);
+	}
+	
+	public String toCSV() {
+		return String.format("Tratamiento;%s;%s;%s;%4.2f;%b\n", sCodigo, sDescripcion, sFecha, fPrecio, bCobrado);
 	}
 	
 }
