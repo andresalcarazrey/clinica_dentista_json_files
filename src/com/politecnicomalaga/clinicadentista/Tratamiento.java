@@ -113,7 +113,7 @@ public class Tratamiento {
 	}
 	
 	public String toCSV() {
-		return String.format("Tratamiento;%s;%s;%s;%4.2f;%b\n", sCodigo, sDescripcion, sFecha, fPrecio, bCobrado);
+		return String.format("Tratamiento;%s;%s;%s;%s;%b\n", sCodigo, sDescripcion, sFecha, fPrecio, bCobrado);
 	}
 	
 }

@@ -230,7 +230,15 @@ public class Paciente {
 	}
 	
 	public String toCSV() {
-		String resultado = String.format("Paciente;%s;%s;%s;%s;%s;%s\n", sNombre, sApellidos, sDni, sFNac, sEmail,sTelefono);
+		/* Para recordar el orden de los atributos
+		 * this.sNombre = columnas[1];
+			this.sApellidos = columnas[2];
+			this.sTelefono = columnas[3];
+			this.sEmail = columnas[4];
+			this.sDni = columnas[5];
+			this.sFNac = columnas[6];
+		 */
+		String resultado = String.format("Paciente;%s;%s;%s;%s;%s;%s\n", sNombre, sApellidos, sTelefono, sEmail, sDni, sFNac);
 		for(Tratamiento t:this.misTratamientos) {
 			resultado += t.toCSV();
 		}
