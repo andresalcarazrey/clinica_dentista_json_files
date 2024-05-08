@@ -491,20 +491,15 @@ public class MainLauncher {
 	}
 
 	private static void saveClinica() {
-		if (ControladorFicheros.writeText("clinica.csv", miClinica.toCSV())) {
-			System.out.println("Proceso de volcado a disco exitoso");
-		} else {
-			System.out.println("Error al escribir en disco. ¿Tiene espacio en el disco?");
-		}
+		/*
+		 * Aquí hay que poner llamada a Controlador de Ficheros
+		 * */
 	}
 
 	private static void loadClinica(Scanner sc) {
-		System.out.println("Se van a recargar los datos desde disco");
-		System.out.println("Todos los datos actuales serán sustituidos");
-		System.out.println("¿Está seguro?(S para Sí; Otra letra para No) ");
-		String respuesta = leerStringTeclado(sc);
-		if (respuesta.equals("S"))
-			miClinica = new Clinica(ControladorFicheros.readText("clinica.csv"));
+		/*
+		 * Aquí hay que poner llamada a Controlador de Ficheros
+		 * */
 	}
 
 }

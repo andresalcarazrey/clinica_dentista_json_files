@@ -1,7 +1,5 @@
 package com.politecnicomalaga.clinicadentista;
 
-import java.text.Format;
-
 public class Tratamiento {
 	public enum AtributosTratamiento {CODIGO,DESCRIPCION,FECHA,PRECIO,COBRADO};
 	
@@ -107,13 +105,5 @@ public class Tratamiento {
 	    return false;
 	}
 	
-	@Override
-	public String toString() {
-		return String.format("%6s#%30s#%10s#%4.2f# Cobrado: %b", sCodigo, sDescripcion, sFecha, fPrecio, bCobrado);
-	}
-	
-	public String toCSV() {
-		return String.format("Tratamiento;%s;%s;%s;%s;%b\n", sCodigo, sDescripcion, sFecha, fPrecio, bCobrado);
-	}
 	
 }

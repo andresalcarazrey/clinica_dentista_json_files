@@ -1,6 +1,7 @@
 package com.politecnicomalaga.clinicadentista;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class Clinica {
@@ -12,7 +13,7 @@ public class Clinica {
 	private String sEmail;
 	private String sCIF;
 	
-	private ArrayList<Paciente> misPacientes;
+	private List<Paciente> misPacientes;
 	
 	
 	//Comportamiento
@@ -27,32 +28,7 @@ public class Clinica {
 		this.misPacientes = new ArrayList<>();
 	}
 	
-	public Clinica(String sCSV) {
-		String[] lineas = sCSV.split("\n");
-		//Me vendrá una línea mínimo para clinica
-		String[] columnas = lineas[0].split(";");
-		if (columnas[0].equals("Clinica")) {
-			this.sNombre = columnas[1];
-			this.sDireccion = columnas[2];
-			this.sTelefono = columnas[3];
-			this.sEmail = columnas[4];
-			this.sCIF = columnas[5];
-		} else {
-			return;
-		}
-		
-		//Después de 0 a n tratamientos
-		this.misPacientes = new ArrayList<>();
-		
-		String[] pacientesPosibles = sCSV.split("Paciente");
-		String miPacienteCSV;
-		
-		for (int i=1;i<pacientesPosibles.length;i++) {
-			miPacienteCSV = "Paciente" + pacientesPosibles[i];
-			Paciente p = new Paciente(miPacienteCSV);
-			misPacientes.add(p);
-		}
-	}
+	
 	
 
 
@@ -169,16 +145,6 @@ public class Clinica {
 		}
 		return false;
 	}
-	
-	
-	public String toCSV() {
-		String resultado = String.format("Clinica;%s;%s;%s;%s;%s\n", sNombre, sDireccion, sTelefono, sEmail, sCIF);
-		for(Paciente p:this.misPacientes) {
-			resultado += p.toCSV();
-		}
-		return resultado;
-	}
-	
 	
 
 }
